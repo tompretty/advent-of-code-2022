@@ -8,7 +8,8 @@ namespace HelloWorld
         {
             // SolveDay1();
             // SolveDay2();
-            SolveDay3();
+            // SolveDay3();
+            SolveDay4();
         }
 
         static void SolveDay1()
@@ -46,6 +47,19 @@ namespace HelloWorld
             Console.WriteLine("Q1 = {0}", q1);
 
             var q2 = Day3.GetTotalPriorityOfGroupBadges(lines);
+
+            Console.WriteLine("Q2 = {0}", q2);
+        }
+
+        static void SolveDay4()
+        {
+            var lines = System.IO.File.ReadAllLines("./Inputs/Day4.txt").ToList();
+
+            var q1 = Day4.GetNumberOfAssignmentsThatFullyOverlap(lines);
+
+            Console.WriteLine("Q1 = {0}", q1);
+
+            var q2 = Day4.GetNumberOfAssignmentsThatOverlap(lines);
 
             Console.WriteLine("Q2 = {0}", q2);
         }
