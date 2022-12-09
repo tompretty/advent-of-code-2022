@@ -7,7 +7,8 @@ namespace HelloWorld
         static void Main(string[] args)
         {
             // SolveDay1();
-            SolveDay2();
+            // SolveDay2();
+            SolveDay3();
         }
 
         static void SolveDay1()
@@ -32,6 +33,19 @@ namespace HelloWorld
             Console.WriteLine("Q1 = {0}", q1);
 
             var q2 = Day2.GetPointsForWinLoseDrawStrategy(lines);
+
+            Console.WriteLine("Q2 = {0}", q2);
+        }
+
+        static void SolveDay3()
+        {
+            var lines = System.IO.File.ReadAllLines("./Inputs/Day3.txt").ToList();
+
+            var q1 = Day3.GetTotalPriorityOfDuplicatedItems(lines);
+
+            Console.WriteLine("Q1 = {0}", q1);
+
+            var q2 = Day3.GetTotalPriorityOfGroupBadges(lines);
 
             Console.WriteLine("Q2 = {0}", q2);
         }
