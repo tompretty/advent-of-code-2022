@@ -44,84 +44,97 @@ public class TestDay4
 }
 
 [TestClass]
-public class TestAssignment
+public class TestPairAssignment
 {
     [TestMethod]
     public void TestParseFromLine()
     {
         string line = "2-4,6-8";
 
-        var (a1, a2) = Assignment.ParseFromLine(line);
+        var assignment = PairAssignment.ParseFromLine(line);
 
-        Assert.AreEqual(2, a1.Lower);
-        Assert.AreEqual(4, a1.Upper);
-        Assert.AreEqual(6, a2.Lower);
-        Assert.AreEqual(8, a2.Upper);
+        Assert.AreEqual(2, assignment.First.Lower);
+        Assert.AreEqual(4, assignment.First.Upper);
+        Assert.AreEqual(6, assignment.Second.Lower);
+        Assert.AreEqual(8, assignment.Second.Upper);
     }
 
-
-    [TestMethod]
-    public void TestIsOverlappingWhenNotOverlapping()
-    {
-        var a1 = new Assignment(1, 2);
-        var a2 = new Assignment(3, 4);
-
-        Assert.IsFalse(a1.IsOverlapping(a2));
-    }
-
-    [TestMethod]
-    public void TestIsOverlappingWhenOverlapping()
-    {
-        var a1 = new Assignment(1, 3);
-        var a2 = new Assignment(3, 4);
-
-        Assert.IsTrue(a1.IsOverlapping(a2));
-    }
-
-    [TestMethod]
-    public void TestIsFullyContainingWhenNotFullyContaining()
-    {
-        var a1 = new Assignment(1, 2);
-        var a2 = new Assignment(3, 4);
-
-        Assert.IsFalse(a1.IsFullyContaining(a2));
-    }
-
-    [TestMethod]
-    public void TestIsFullyContainingWhenFullyContaining()
-    {
-        var a1 = new Assignment(1, 4);
-        var a2 = new Assignment(2, 3);
-
-        Assert.IsTrue(a1.IsFullyContaining(a2));
-    }
 
 
     [TestMethod]
     public void TestIsEitherFullyContainingWhenNeitherAreFullyContaining()
     {
-        var a1 = new Assignment(1, 2);
-        var a2 = new Assignment(3, 4);
+        var assignment = new PairAssignment
+        (
+            new IndividualAssignment(1, 2),
+            new IndividualAssignment(3, 4)
+        );
 
-        Assert.IsFalse(Assignment.IsEitherFullyContaining(a1, a2));
+        Assert.IsFalse(assignment.IsEitherFullyContaining());
     }
 
 
     [TestMethod]
-    public void TestIsEitherFullyContainingWhenA1IsFullyContaining()
+    public void TestIsEitherFullyContainingWhenFirstIsFullyContaining()
     {
-        var a1 = new Assignment(1, 4);
-        var a2 = new Assignment(2, 3);
+        var assignment = new PairAssignment
+        (
+            new IndividualAssignment(1, 4),
+            new IndividualAssignment(2, 3)
+        );
 
-        Assert.IsTrue(Assignment.IsEitherFullyContaining(a1, a2));
+        Assert.IsTrue(assignment.IsEitherFullyContaining());
     }
 
     [TestMethod]
-    public void TestIsEitherFullyContainingWhenA2IsFullyContaining()
+    public void TestIsEitherFullyContainingWhenSecondIsFullyContaining()
     {
-        var a1 = new Assignment(2, 3);
-        var a2 = new Assignment(1, 4);
+        var assignment = new PairAssignment
+        (
+            new IndividualAssignment(2, 3),
+            new IndividualAssignment(1, 4)
+        );
 
-        Assert.IsTrue(Assignment.IsEitherFullyContaining(a1, a2));
+        Assert.IsTrue(assignment.IsEitherFullyContaining());
+    }
+}
+
+[TestClass]
+public class TestIndividualAssignment
+{
+    [TestMethod]
+    public void TestIsOverlappingWhenNotOverlapping()
+    {
+        var first = new IndividualAssignment(1, 2);
+        var second = new IndividualAssignment(3, 4);
+
+        Assert.IsFalse(first.IsOverlapping(second));
+    }
+
+    [TestMethod]
+    public void TestIsOverlappingWhenOverlapping()
+    {
+        var first = new IndividualAssignment(1, 3);
+        var second = new IndividualAssignment(3, 4);
+
+        Assert.IsTrue(first.IsOverlapping(second));
+    }
+
+    [TestMethod]
+    public void TestIsFullyContainingWhenNotFullyContaining()
+    {
+        var first = new IndividualAssignment(1, 2);
+        var second = new IndividualAssignment(3, 4);
+
+        Assert.IsFalse(first.IsFullyContaining(second));
+    }
+
+    [TestMethod]
+    public void TestIsFullyContainingWhenFullyContaining()
+    {
+        var first = new IndividualAssignment(1, 4);
+        var second = new IndividualAssignment(2, 3);
+
+        Assert.IsTrue(first.IsFullyContaining(second));
     }
 }
