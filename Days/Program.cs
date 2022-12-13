@@ -10,7 +10,8 @@ namespace HelloWorld
             // SolveDay2();
             // SolveDay3();
             // SolveDay4();
-            SolveDay5();
+            // SolveDay5();
+            SolveDay6();
         }
 
         static void SolveDay1()
@@ -76,6 +77,19 @@ namespace HelloWorld
             var q2 = Day5.GetCratesThatEndUpOnTopWithCrateMover9001(lines);
 
             Console.WriteLine("Q2 = {0}", q2);
+        }
+
+        static void SolveDay6()
+        {
+            var lines = System.IO.File.ReadAllLines("./Inputs/Day6.txt");
+
+            var q1 = Day6.GetEndOfStartOfPacketMarkerIndex(lines.ElementAt(0), 4);
+
+            Console.WriteLine("Q1 = {0}", q1 + 1);
+
+            var q2 = Day6.GetEndOfStartOfPacketMarkerIndex(lines.ElementAt(0), 14);
+
+            Console.WriteLine("Q2 = {0}", q2 + 1);
         }
     }
 }
