@@ -11,7 +11,8 @@ namespace HelloWorld
             // SolveDay3();
             // SolveDay4();
             // SolveDay5();
-            SolveDay6();
+            // SolveDay6();
+            SolveDay7();
         }
 
         static void SolveDay1()
@@ -90,6 +91,19 @@ namespace HelloWorld
             var q2 = Day6.GetEndOfStartOfPacketMarkerIndex(lines.ElementAt(0), 14);
 
             Console.WriteLine("Q2 = {0}", q2 + 1);
+        }
+
+        static void SolveDay7()
+        {
+            var lines = System.IO.File.ReadAllLines("./Inputs/Day7.txt");
+
+            var q1 = Day7.GetTotalSizeOfDirectoriesOfSizeLessThan100000(lines);
+
+            Console.WriteLine("Q1 = {0}", q1);
+
+            var q2 = Day7.GetSizeOfSmallestDirectoryToDelete(lines);
+
+            Console.WriteLine("Q2 = {0}", q2);
         }
     }
 }
