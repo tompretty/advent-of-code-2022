@@ -12,7 +12,8 @@ namespace HelloWorld
             // SolveDay4();
             // SolveDay5();
             // SolveDay6();
-            SolveDay7();
+            // SolveDay7();
+            SolveDay8();
         }
 
         static void SolveDay1()
@@ -102,6 +103,19 @@ namespace HelloWorld
             Console.WriteLine("Q1 = {0}", q1);
 
             var q2 = Day7.GetSizeOfSmallestDirectoryToDelete(lines);
+
+            Console.WriteLine("Q2 = {0}", q2);
+        }
+
+        static void SolveDay8()
+        {
+            var lines = System.IO.File.ReadAllLines("./Inputs/Day8.txt");
+
+            var q1 = Day8.GetTotalNumberOfVisibleTrees(lines);
+
+            Console.WriteLine("Q1 = {0}", q1);
+
+            var q2 = Day8.GetHighestScenicScore(lines);
 
             Console.WriteLine("Q2 = {0}", q2);
         }
